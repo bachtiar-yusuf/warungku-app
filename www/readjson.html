@@ -1,0 +1,34 @@
+<html>
+
+<head style="background-color:crimson">
+    <link rel="stylesheet" type="text/css" href="css/ionic.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        var url = "https://bachtiar110101.000webhostapp.com/App_warungku/www/json.php";
+        $.getJSON(url, function(result) {
+            console.log(result);
+            $.each(result, function(i, field) {
+                var id = field.id;
+                var nama = field.nama;
+                var jumlah = field.jumlah;
+                var harga = field.harga;
+                $("#listview").append("<a class='item' href='form.html?id=" + id + "&nama=" + nama + "&jumlah=" + jumlah + "&harga=" + harga + "'><span class='item-note'>$" + harga + "</span><h2>" + nama + " </h2><p>" + jumlah + "</p></a>");
+            });
+        });
+    });
+    </script>
+</head>
+
+<body style="background-color:blue">
+    <div class="bar bar-header bar-positive" style="margin-bottom:80px;">
+        <a href="index.html" class="button button-clear">HOME</a>
+        <h1 class="title">HISTORY</h1>
+    </div>
+    <br/>
+    <br/>
+    <ul class="list" id="listview">
+    </ul>
+</body>
+
+</html>
